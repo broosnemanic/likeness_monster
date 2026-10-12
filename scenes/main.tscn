@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://4braxhxdvf5r"]
+
+[ext_resource type="Texture2D" uid="uid://df3hp0gpkrbmg" path="res://icons/marker3.png" id="2_ehwts"]
+[ext_resource type="Script" uid="uid://caueaydwf06g" path="res://scripts/game_control.gd" id="2_oxx1w"]
+[ext_resource type="Script" uid="uid://cktyumm55i4a6" path="res://scripts/board.gd" id="3_ga16p"]
+[ext_resource type="Script" uid="uid://bhbb1fdli6pc1" path="res://scripts/tile_factory.gd" id="4_3bagv"]
+[ext_resource type="Texture2D" uid="uid://v0mqehjk76s" path="res://icons/icon.svg" id="4_5tiad"]
+[ext_resource type="Texture2D" uid="uid://dhjjh06y7pyy2" path="res://icons/jem_mask.png" id="6_v80sw"]
+[ext_resource type="Script" uid="uid://tipdfr1tmwi1" path="res://scripts/NewGameButton.gd" id="6_y1hdh"]
+
+[node name="Main" type="Node2D" unique_id=490991603]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1286304089]
+visible = false
+z_index = 5
+texture = ExtResource("4_5tiad")
+
+[node name="Marker3" type="Sprite2D" parent="." unique_id=1627128623]
+visible = false
+z_index = 6
+position = Vector2(446, 415)
+texture = ExtResource("2_ehwts")
+
+[node name="game_control" type="Node" parent="." unique_id=549508031]
+script = ExtResource("2_oxx1w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="game_control" unique_id=1752124679]
+
+[node name="TopBox" type="VBoxContainer" parent="game_control/CanvasLayer" unique_id=1267145232]
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 799.0
+offset_bottom = 1276.0
+
+[node name="MenuBar" type="HBoxContainer" parent="game_control/CanvasLayer/TopBox" unique_id=1599776492]
+layout_mode = 2
+
+[node name="HintButton" type="Button" parent="game_control/CanvasLayer/TopBox/MenuBar" unique_id=1808090092]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hint"
+
+[node name="NewGameButton" type="Button" parent="game_control/CanvasLayer/TopBox/MenuBar" unique_id=1789938209]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "New Game"
+
+[node name="OpenSettingsButton" type="Button" parent="game_control/CanvasLayer/TopBox/MenuBar" unique_id=769699369]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Settings"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="game_control/CanvasLayer/TopBox" unique_id=1976495985]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NoMoreMatchesLabel" type="Label" parent="game_control/CanvasLayer/TopBox/HBoxContainer" unique_id=536100654]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "No More Matches"
+
+[node name="SettingsContainer" type="VBoxContainer" parent="game_control/CanvasLayer/TopBox" unique_id=1463344272]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsMenuBar" type="HBoxContainer" parent="game_control/CanvasLayer/TopBox/SettingsContainer" unique_id=1211138226]
+layout_mode = 2
+
+[node name="MatchType" type="OptionButton" parent="game_control/CanvasLayer/TopBox/SettingsContainer/SettingsMenuBar" unique_id=1016103274]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "Match: SET"
+popup/item_0/id = 0
+popup/item_1/text = "Match: All different"
+popup/item_1/id = 1
+popup/item_2/text = "Match: 2 or more"
+popup/item_2/id = 2
+popup/item_3/text = "Match: All the same"
+popup/item_3/id = 3
+
+[node name="PuzzleSize" type="OptionButton" parent="game_control/CanvasLayer/TopBox/SettingsContainer/SettingsMenuBar" unique_id=1390490404]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 3
+item_count = 5
+popup/item_0/text = "Size: 4 x 4"
+popup/item_0/id = 0
+popup/item_1/text = "Size: 5 x 5"
+popup/item_1/id = 1
+popup/item_2/text = "Size: 6 x 6"
+popup/item_2/id = 2
+popup/item_3/text = "Size: 8 x 8"
+popup/item_3/id = 3
+popup/item_4/text = "Size: 10 x 10"
+popup/item_4/id = 4
+
+[node name="NewGameButton" type="Button" parent="game_control/CanvasLayer/TopBox/SettingsContainer/SettingsMenuBar" unique_id=1877012858]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "New Game"
+script = ExtResource("6_y1hdh")
+
+[node name="CloseSettingsButton" type="Button" parent="game_control/CanvasLayer/TopBox/SettingsContainer/SettingsMenuBar" unique_id=561500914]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Close"
+
+[node name="SettingsBackground" type="TextureRect" parent="game_control/CanvasLayer/TopBox/SettingsContainer" unique_id=1080475485]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_v80sw")
+
+[node name="tile_factory" type="Node2D" parent="game_control" unique_id=781595958]
+script = ExtResource("4_3bagv")
+
+[node name="board" type="Node2D" parent="game_control" unique_id=506439818]
+script = ExtResource("3_ga16p")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=579100660]
+offset = Vector2(400, 300)
+zoom = Vector2(0.07, 0.07)
+
+[node name="JemMask" type="Sprite2D" parent="." unique_id=1791044911]
+z_index = 5
+position = Vector2(268, -85)
+texture = ExtResource("6_v80sw")

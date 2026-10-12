@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmxmd3jhydbmm"]
+
+[ext_resource type="Script" path="res://scripts/peg.gd" id="1_ns6mm"]
+[ext_resource type="Script" path="res://scripts/peg_trigger.gd" id="2_vkjo0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j25wk"]
+size = Vector2(128, 128)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m3qmi"]
+load_path = "res://.godot/imported/peg.png-9edafe1f661cab2ae3e4bd140bfb9958.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5gro"]
+size = Vector2(88, 90)
+
+[node name="peg" type="StaticBody2D" groups=["peg"]]
+script = ExtResource("1_ns6mm")
+
+[node name="peg_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j25wk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_m3qmi")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 14
+script = ExtResource("2_vkjo0")
+
+[node name="shape" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_b5gro")
